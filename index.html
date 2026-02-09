@@ -228,6 +228,246 @@
             margin-bottom: 20px;
         }
 
+
+        /* Photo Section with Love Animation */
+        .photo-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .photo-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #c44569;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 40px;
+        }
+
+        .love-animation {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .animated-heart {
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 10px 30px rgba(255, 107, 157, 0.5));
+            animation: heartPulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.15);
+            }
+        }
+
+        .heart-path {
+            animation: heartGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes heartGlow {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.2);
+            }
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .float-heart {
+            position: absolute;
+            bottom: 0;
+            font-size: 24px;
+            animation: floatUp 4s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: 0;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: translateX(20px) rotate(15deg);
+            }
+        }
+
+        .love-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #c44569;
+            margin-top: 30px;
+            text-shadow: 0 2px 10px rgba(196, 69, 105, 0.3);
+            animation: textGlow 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                opacity: 0.8;
+                text-shadow: 0 2px 10px rgba(196, 69, 105, 0.3);
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 2px 20px rgba(196, 69, 105, 0.6), 0 0 30px rgba(255, 107, 157, 0.4);
+            }
+        }
+
+        /* Photo Gallery Styles */
+        .memories-gallery {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+        }
+
+        .memories-gallery h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #c44569;
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease 0.5s backwards;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            aspect-ratio: 3/4;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .gallery-item[data-index="0"] { animation-delay: 0.2s; }
+        .gallery-item[data-index="1"] { animation-delay: 0.4s; }
+        .gallery-item[data-index="2"] { animation-delay: 0.6s; }
+        .gallery-item[data-index="3"] { animation-delay: 0.8s; }
+        .gallery-item[data-index="4"] { animation-delay: 1s; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(196, 69, 105, 0.95), transparent);
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay p {
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .animated-heart {
+                width: 150px;
+                height: 150px;
+            }
+
+            .love-animation {
+                height: 300px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+
+            .float-heart {
+                font-size: 18px;
+            }
+        }
         /* Photo Gallery */
         .gallery-section {
             padding: 80px 20px;
@@ -542,6 +782,75 @@
         </div>
     </section>
 
+    <!-- Photo Section with Animated Love Image -->
+    <section class="photo-section">
+        <h2>Made with Love 💝</h2>
+        <div class="photo-container">
+            <div class="love-animation">
+                <!-- Animated Heart -->
+                <svg class="animated-heart" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="heart-path" d="M50,90 C50,90 10,65 10,40 C10,25 20,15 30,15 C40,15 50,25 50,25 C50,25 60,15 70,15 C80,15 90,25 90,40 C90,65 50,90 50,90 Z" fill="url(#heartGradient)"/>
+                    <defs>
+                        <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#c44569;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                
+                <!-- Floating Hearts -->
+                <div class="floating-hearts">
+                    <span class="float-heart" style="left: 10%; animation-delay: 0s;">❤️</span>
+                    <span class="float-heart" style="left: 25%; animation-delay: 0.5s;">💕</span>
+                    <span class="float-heart" style="left: 40%; animation-delay: 1s;">💖</span>
+                    <span class="float-heart" style="left: 60%; animation-delay: 1.5s;">💗</span>
+                    <span class="float-heart" style="left: 75%; animation-delay: 2s;">💝</span>
+                    <span class="float-heart" style="left: 90%; animation-delay: 2.5s;">💓</span>
+                </div>
+                
+                <!-- Love Text -->
+                <div class="love-text">Forever & Always</div>
+            </div>
+        </div>
+        
+        <!-- Photo Gallery -->
+        <div class="memories-gallery">
+            <h3>Our Beautiful Moments 💑</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-index="0">
+                    <img src="5" alt="Our Special Day">
+                    <div class="gallery-overlay">
+                        <p>Forever Together</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="1">
+                    <img src="zm.jpg" alt="zz">
+                      <div class="gallery-overlay">
+                        <p>A Celebration to Remember</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="2.jpeg" alt="Our Love">
+                    <div class="gallery-overlay">
+                        <p>Love & Commitment</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="3.jpeg" alt="Together">
+                    <div class="gallery-overlay">
+                        <p>Side by Side</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="4.jpeg" alt="Happy Moments">
+                    <div class="gallery-overlay">
+                        <p>Perfect Moments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     
     <!-- Timeline Section -->
     <section class="timeline-section">
@@ -589,18 +898,9 @@
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
             <button class="popup-close" id="popupClose">&times;</button>
-            <h3>🎀 Surprise Gift Unlocked 🎀
-</h3>
-            <p>This gift is not a ring,
-not flowers,
-not chocolates…
-This gift is my promise 💖
-To love you every day,
-to stand by you in every situation,
-and to grow old with you 🤍
-Happy Birthday Mantasha 🎂✨
-From 8 July 2021 to Forever</p>
-            <p style="margin-top: 20px; font-style: italic;">With all my love,<br>#zainsha 💍 💕</p>
+            <h3>You're Amazing! 🌟</h3>
+            <p>Never forget how special you are. Your smile brightens the darkest days, and your kindness touches everyone around you. May this year bring you endless joy, incredible adventures, and all the dreams your heart holds. You deserve the absolute best!</p>
+            <p style="margin-top: 20px; font-style: italic;">With all my love,<br>Always 💕</p>
         </div>
     </div>
 
@@ -706,5 +1006,4 @@ From 8 July 2021 to Forever</p>
         });
     </script>
 </body>
-
 </html>
